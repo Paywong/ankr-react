@@ -6,7 +6,7 @@ import { AnkrGlobalContext } from '../components';
 
 export const useAccountBalance = (params: GetAccountBalanceRequest) => {
   const { ankrjsProvider } = useContext(AnkrGlobalContext);
-  const { data, error, isLoading } = useQuery(
+  const { data, error, isLoading, refetch } = useQuery(
     ['getAccountBalance', params.walletAddress],
     () =>
       getAccountBalance({
@@ -15,5 +15,5 @@ export const useAccountBalance = (params: GetAccountBalanceRequest) => {
       })
   );
 
-  return { data, error, isLoading };
+  return { data, error, isLoading, refetch };
 };
